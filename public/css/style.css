@@ -1,91 +1,122 @@
-body{
-  font-family: "Plus Jakarta Sans", sans-serif !important;
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+body {
+  font-family: sans-serif;
   display: flex;
   flex-direction: column;
   min-height: 100vh;
+  overflow: hidden;
+}
+.container {
+  flex: 1;
+  
+}
+/*NAVBAR*/
+.navbar {
+  height: 5rem !important;
+  background-color: white !important;
 }
 
-.container{
-  flex: 1;
-}
-/*NavBar*/
-.navbar{
-  height: 5rem;
-  background-color: white;
-}
-.fa-compass{
+.fa-compass {
   color: #fe424d;
   font-size: 2rem;
 }
-.nav-link{
-  color: #222222 !important;
-}
 
+.nav-link {
+  color: #222 !important;
+}
 /*Footer*/
-.f-info-links a{
+.f-info-links a {
   text-decoration: none;
   color: #222;
 }
-.f-info-links a:hover{
+
+.f-info-links a:hover {
   text-decoration: underline;
 }
 
-.f-info-links,.f-info-socials{
+.f-info-links,
+.f-info-socials,
+.f-info-brand {
   width: 100%;
-  text-align: center;
   display: flex;
-  flex-direction: row;
   align-items: center;
   justify-content: center;
 }
 
-.f-info-socials .fa-brands{
-  margin-right: 1rem;
+.f-info-socials i {
   font-size: 1.2rem;
+  margin-right: 1rem;
 }
 
-.f-info{
+.f-info {
+  text-align: center;
   height: 8rem;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-evenly;
   background-color: #ebebeb;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: space-evenly;
 }
-/*Card*/
 
-.card{
+/*cards*/
+.card {
   border: none !important;
-  margin-bottom: 3rem !important;
+  margin-bottom: 2rem;
 }
 
-.card-img-top{
+.card-img-top {
   border-radius: 1rem !important;
   width: 100% !important;
   object-fit: cover !important;
 }
-
-.card-body{
+.card-body {
   padding: 0 !important;
 }
 
-.card-text p{
+.card-text {
   font-weight: 400 !important;
 }
 
-.listing-link{
+.listing-link {
   text-decoration: none;
 }
-.card-img-overlay{
+
+.card-img-overlay {
   opacity: 0;
 }
-.card-img-overlay:hover{
+
+.card-img-overlay:hover {
   opacity: 0.2;
   background-color: white;
 }
 
-/*show img*/
-.show-img{
+.add-btn {
+  background-color: #fe424d !important;
+  border: none !important;
+  color: #fff !important;
+}
+
+/* show Page */
+.show-img {
   height: 30vh;
-  
+}
+
+.btns {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+.btns button a {
+  text-decoration: none;
+  color: white;
+}
+
+.show-card {
+  padding-left: 0;
+  padding-right: 0;
 }

@@ -11,7 +11,7 @@ const listingSchema = new Schema({
   image: {
     filename: {
       type: String,
-      default : "listingimage"
+      default: "listingimage",
     },
     url: {
       type: String,
@@ -26,6 +26,12 @@ const listingSchema = new Schema({
   price: Number,
   location: String,
   country: String,
+  reviews: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: "Review",
+    },
+  ],
 });
 
 const Listing = mongoose.model("Listing", listingSchema);
@@ -33,6 +39,5 @@ const Listing = mongoose.model("Listing", listingSchema);
 module.exports = Listing;
 
 // Default Image Link :
-
 
 // https://images.unsplash.com/photo-1475924156734-496f6cac6ec1?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D
