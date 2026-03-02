@@ -1,0 +1,111 @@
+<body>
+  <%- layout("/layouts/boilerplate.ejs") %>
+  <br /><br />
+  <div class="row">
+    <div class="col-8 offset-2">
+      <form
+        method="post"
+        action="/listings"
+        class="needs-validation"
+        novalidate
+      >
+        <h3>Create a New Listing</h3>
+        <div class="mb-3">
+          <label for="listing[title]" class="form-label">Title</label>
+          <input
+            type="text"
+            name="listing[title]"
+            placeholder="enter title"
+            class="form-control"
+            required
+          />
+          <div class="valid-feedback">Valid!</div>
+          <div class="invalid-feedback">Invalid!</div>
+        </div>
+
+        <div class="mb-3">
+          <label for="listing[description]" class="form-label"
+            >Description</label
+          >
+          <textarea
+            type="text"
+            name="listing[description]"
+            placeholder="enter description"
+            class="form-control"
+            required
+          ></textarea>
+          <div class="valid-feedback">Valid!</div>
+          <div class="invalid-feedback">Invalid!</div>
+        </div>
+
+        <div class="mb-3">
+          <label for="listing[image][filename]" class="form-label"
+            >Name of the Image</label
+          >
+          <input
+            type="text"
+            name="listing[image][filename]"
+            placeholder="enter file Name"
+            class="form-control"
+            required
+          />
+          <div class="valid-feedback">Valid!</div>
+          <div class="invalid-feedback">Invalid!</div>
+        </div>
+
+        <div class="mb-3">
+          <label for="listing[image][url]" class="form-label">Image Link</label>
+          <input
+            type="text"
+            name="listing[image][url]"
+            placeholder="image link/url"
+            class="form-control"
+          />
+          <div class="valid-feedback">Valid!</div>
+          <div class="invalid-feedback">Invalid!</div>
+        </div>
+
+        <div class="row">
+          <div class="mb-3 col-4">
+            <label for="listing[price]" class="form-label">Price</label>
+            <input
+              type="text";
+              name="listing[price]"
+              placeholder="enter price"
+              class="form-control"
+              required
+            />
+            <div class="valid-feedback">Valid!</div>
+            <div class="invalid-feedback">Invalid!</div>
+          </div>
+          <div class="mb-3 col-8">
+            <label for="listing[country]" class="form-label">Country</label>
+            <input
+              type="text"
+              name="listing[country]"
+              placeholder="enter country"
+              class="form-control"
+              required
+            />
+            <div class="valid-feedback">Valid!</div>
+            <div class="invalid-feedback">Invalid!</div>
+          </div>
+        </div>
+        <div class="mb-3">
+          <label for="listing[location]" class="form-label">Location</label>
+          <input
+            type="text"
+            name="listing[location]"
+            placeholder="enter location"
+            class="form-control"
+            required
+          />
+          <div class="valid-feedback">Valid!</div>
+          <div class="invalid-feedback">Invalid!</div>
+        </div>
+
+        <button class="btn btn-outline-dark mb-3">Submit</button>
+      </form>
+    </div>
+  </div>
+</body>
