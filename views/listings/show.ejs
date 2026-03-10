@@ -12,25 +12,27 @@
     />
     <div class="card-body">
       <p class="card-text">
-        <br />
-        <%=listing.description%> <br />
-        <span class="text-success fw-bold"
-          >&#8377; <%=listing.price.toLocaleString("en-In")%></span
-        >
-        / Night<br />
-        <i class="fa-solid fa-location-dot"></i><%=listing.location%>,
-        <%=listing.country%>
-      </p>
+        Owned by
+        <i><%=listing.owner.username%></i></p>
+       <p class="card-text"> <%=listing.description%></p> 
+       <p class="card-text"><span class="text-success fw-bold"
+          >&#8377; <%=listing.price.toLocaleString("en-In")%></span>/ Night</p>
+        <p class="card-text"><i class="fa-solid fa-location-dot"></i><%=listing.location%>,</p>
+        
+        <p class="card-text"><%=listing.country%></p>
+        
+      
     </div>
   </div>
   <div class="col-3 offset-3 mb-3">
     <div class="d-flex gap-2 align-items-center">
-      <a class="btn btn-outline-dark" href="http://localhost:6500/listings"
+      <a class="btn btn-outline-dark" href="/listings"
         >Home Page</a
       >
+      <% if(currUser && currUser._id.equals(listing.owner._id)) { %>
       <a
         class="btn btn-outline-dark"
-        href="/listings/<%= listing._id %>/edit?_method="
+        href="/listings/<%= listing._id %>/edit"
         >Edit Page</a
       >
       <form
@@ -40,11 +42,14 @@
       >
         <button class="btn btn-outline-danger">Delete Listing</button>
       </form>
+      <% } %>
     </div>
   </div>
 
+   
   <div class="col-8 offset-3 mb-3">
     <hr />
+     <% if(currUser){ %>
     <h4>Leave a Review</h4>
     <form
       action="/listings/<%= listing._id %>/reviews"
@@ -77,8 +82,9 @@
       </div>
       <button class="btn btn-outline-dark">Submit</button>
     </form>
-
-    <hr />
+     <hr />
+    <% } %>
+   
 
     <p><b>All Reviews</b></p>
     <div class="row">
@@ -87,7 +93,7 @@
       ">
         <div class="card-body">
           <div class="card-title">
-            Dharmesh V
+            <%= review.author.user %>
           </div>
           <div class="card-text">
             <%= review.comment %>
