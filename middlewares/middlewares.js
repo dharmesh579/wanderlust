@@ -22,8 +22,8 @@ const saveRedirectUrl = (req, res, next) => {
 const isOwner = async (req, res, next) => {
   let { id } = req.params;
   let listing = await Listing.findById(id);
-  if (!listing.owner._id.equals(req.locals.currUser._id)) {
-    res.flash("error", "You are not the owner of the listing");
+  if (!listing.owner.equals(res.locals.currUser._id)) {
+    req.flash("error", "You are not the owner of the listing");
     return res.redirect(`/listings/${id}`);
   }
   next();
@@ -52,8 +52,12 @@ const validateReview = (req, res, next) => {
 const isReviewAuthor = async (req, res, next) => {
   let { id, reviewId } = req.params;
   let review = await Review.findById(reviewId);
-  if (!review.owner._id.equals(req.locals.currUser._id)) {
-    res.flash("error", "You are not the author of the review");
+  if (!review) {
+    req.flash("error", "Review not found");
+    return res.redirect(`/listings/${id}`);
+  }
+  if (!review.author._id.equals(res.locals.currUser._id)) {
+    req.flash("error", "You are not the author of the review");
     return res.redirect(`/listings/${id}`);
   }
   next();
