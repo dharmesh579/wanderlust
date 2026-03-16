@@ -10,7 +10,6 @@ const listingSchema = joi.object({
       country: joi.string().required(),
       price: joi.number().required().min(0),
       image: joi.object({
-        filename: joi.string().required(),
         url: joi.string().allow("", null).optional(),
       }),
     })
