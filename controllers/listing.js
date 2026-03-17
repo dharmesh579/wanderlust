@@ -1,5 +1,6 @@
 const Listing = require("../models/listing.js");
 const ExpressError = require("../utils/ExpressError.js");
+const optimizeImage = require("../utils/optimizeImage.js");
 
 const index = async (req, res) => {
   const allListings = await Listing.find();
@@ -45,7 +46,9 @@ const renderEdit = async (req, res) => {
     req.flash("error", "Listing Not Found");
     return res.redirect("/listings");
   }
-  res.render("listings/edit.ejs", { listing });
+  let originalImageUrl = listing.image.url;
+  originalImageUrl = optimizeImage(originalImageUrl);
+  res.render("listings/edit.ejs", { listing, originalImageUrl });
 };
 
 const updateListing = async (req, res) => {
@@ -56,6 +59,12 @@ const updateListing = async (req, res) => {
   await Listing.findByIdAndUpdate(id, {
     ...req.body.listing,
   });
+  if (typeof req.file !== "undefined") {
+    let url = req.file.path;
+    let filename = req.file.filename;
+    listing.image = { url, filename };
+    await listing.save();
+  }
   req.flash("success", "Listing Updated");
   res.redirect(`/listings/${id}`);
 };
